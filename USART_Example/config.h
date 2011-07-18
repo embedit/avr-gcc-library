@@ -36,23 +36,9 @@
 #define USART0_RX_BUFFER_SIZE 32
 #define USART0_TX_BUFFER_SIZE 32
 
-#define RS485_0_PORT	PORTD
-#define RS485_0_DDR		DDRD
-#define RS485_0_BIT		PD2
-
-
-/*------------------------------------------------------------------------------
- * Defines for LCD
- *----------------------------------------------------------------------------*/
-#define LCD_ROWS        4				// Number of Rows
-#define LCD_COLS        20				// Number of Columns
-#define LCD_DATA_PORT   PORTB			// Port Register of the LCD Data Port
-#define LCD_D4          0				// Port Bit connected to D4 of the LCD
-#define LCD_CTRL_PORT   PORTD			// Port Register for the LCD control signals
-#define LCD_RS          6				// Port Bit of the RS Signal
-#define LCD_RW          5				// Port Bit of the RW Signal
-#define LCD_E           4				// Port Bit of the Enable Signal
-#define LCD_BL          3				// Port Bit to control the Backlight
+//#define RS485_0_PORT	PORTD
+//#define RS485_0_DDR		DDRD
+//#define RS485_0_BIT		PD2
 
 
 /*------------------------------------------------------------------------------
