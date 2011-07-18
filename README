@@ -1,2 +1,10 @@
-Hello World
+The avr-gcc-library is a little but useful extension for the avr-gcc compiler.
+The project dependand configuration is done in config.h, which is located 
+in the project root dir.
 
+
+= History =
+18.07.2011
+ * utils library added
+ * usart library added
+ * usart1 library added
