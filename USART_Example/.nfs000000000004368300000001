@@ -1,0 +1,151 @@
+#ifndef CONFIG_H
+#define CONFIG_H
+/*------------------------------------------------------------------------------
+ * Copyright 1994-2008 The FreeBSD Project. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ *	this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *	this list of conditions and the following disclaimer in the documentation
+ *	and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE FREEBSD PROJECT "AS IS" AND ANY EXPRESS
+ * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ * IN NO EVENT SHALL THE FREEBSD PROJECT OR CONTRIBUTORS BE LIABLE FOR ANY
+ * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *----------------------------------------------------------------------------*/
+
+#include <avr/io.h>
+#include <utils.h>
+
+/*------------------------------------------------------------------------------
+ * Defines for USART0
+ *----------------------------------------------------------------------------*/
+// define Baud Rate
+#define BAUD 9600
+// define Receive Buffer Size. Size can be 2, 4, 8, 16, 32, 64, 128 or 256 Byte
+#define USART0_RX_BUFFER_SIZE 32
+// define Transmit Buffer Size. Size can be 2, 4, 8, 16, 32, 64, 128 or 256 Byte
+#define USART0_TX_BUFFER_SIZE 32
+
+/*------------------------------------------------------------------------------
+ * Defines for USART1
+ *----------------------------------------------------------------------------*/
+ // define Baud Rate
+#define BAUD1 9600
+// define Receive Buffer Size. Size can be 2, 4, 8, 16, 32, 64, 128 or 256 Byte
+#define USART1_RX_BUFFER_SIZE 32
+// define Transmit Buffer Size. Size can be 2, 4, 8, 16, 32, 64, 128 or 256 Byte
+#define USART1_TX_BUFFER_SIZE 32
+
+/*------------------------------------------------------------------------------
+ * Defines for USART2
+ *----------------------------------------------------------------------------*/
+// define Baud Rate
+#define BAUD2 9600
+// define Receive Buffer Size. Size can be 2, 4, 8, 16, 32, 64, 128 or 256 Byte
+#define USART2_RX_BUFFER_SIZE 32
+// define Transmit Buffer Size. Size can be 2, 4, 8, 16, 32, 64, 128 or 256 Byte
+#define USART2_TX_BUFFER_SIZE 32
+
+/*------------------------------------------------------------------------------
+ * Defines for USART3
+ *----------------------------------------------------------------------------*/
+ // define Baud Rate
+#define BAUD3 9600
+// define Receive Buffer Size. Size can be 2, 4, 8, 16, 32, 64, 128 or 256 Byte
+#define USART3_RX_BUFFER_SIZE 32
+// define Transmit Buffer Size. Size can be 2, 4, 8, 16, 32, 64, 128 or 256 Byte
+#define USART3_TX_BUFFER_SIZE 32
+
+/*------------------------------------------------------------------------------
+ * Defines for Systick
+ *----------------------------------------------------------------------------*/
+#define USE_TIMER		0			// use Timer0 for Systick (2 for Timer2)
+#define SYSTICK_TCNT	0x70		// define Value for TCNT
+#define SYSTICK_TCCR	0x05		// define Value for TCCR
+
+/*------------------------------------------------------------------------------
+ * Defines for SysLED
+ *----------------------------------------------------------------------------*/
+//#define SYSTICK_SYSLED			// uncomment this line to use SysLED
+#define SYSLED_PORT		PORTB		// Port Register of the SysLED Port
+#define SYSLED_DDR		DDRB		// Data Direction Register of the SysLED Port
+#define NO_SYSLED		1			// Number of SysLEDs
+#define FIRST_SYSLED	PB0			// First SysLED on the port
+#define SYSLED_LOGIC	0b00000000	// 1=positive logic, 0=negative logic
+#define SYSLED_RATE		100			// Flash rate in Systicks
+
+/*------------------------------------------------------------------------------
+ * Defines for SysSwitch
+ *----------------------------------------------------------------------------*/
+//#define SYSTICK_SYSSWITCH			// uncomment this line to use SysSwitch
+#define SYSSWITCH_PIN   PINB		// Pin Register of SysSwitch Port
+#define SYSSWITCH_DDR   DDRB		// Data Direction Register of SysSwitch Port
+#define NO_SYSSWITCH	1			// Number of SysSwitches
+#define FIRST_SYSSWITCH PB1			// First SysSwitch in the port
+#define SYSSWITCH_LOGIC 0b00000001	// 1=positive logic, 0=negative logic
+#define SYSSWITCH_DEBOUNCE 3		// Number of Systicks to debounce
+
+/*------------------------------------------------------------------------------
+ * Defines for SysADC
+ *----------------------------------------------------------------------------*/
+//#define SYSTICK_ADC				// uncomment this line to use SysADC
+#define FIRST_ADC_CHAN	ADC0		// First used ADC Channel
+#define NO_ADC_CHANS	4			// Number of ADC Channels used in Application
+#define ADC_PRESC		ADC_PRESC_64 // Define analog prescaler value
+#define ADC_REF			ADC_REF_AVCC // Define analog reference value
+
+/*------------------------------------------------------------------------------
+ * Defines for Utils
+ *----------------------------------------------------------------------------*/
+// Don't remove
+#include <sysswitch.h>				// SysSwitch must be included here.
+
+/*-----------------------------------
+ * LINE_END defines the Line Ending for writeln() and writeln_p()
+ * 0=UNIX='\n'
+ * 1=MAC='\r'
+ * 2=WIN='\r\n'
+ *----------------------------------*/
+#define LINE_END 2
+
+/*-----------------------------------
+ * Define your IO here
+ * Examples for LED at PORTD.0 and switch at PIND.1
+ * #define LED1	   BIT(PORTD, 0)
+ * #define SWITCH1	BIT(PIND, 1)
+ *----------------------------------*/
+#define LED1		BIT(PORTB,0)
+#define SWITCH1	 BIT(PINB,1)
+//#define Switch		BIT(SysSwitchPort,1)	// define a Switch on SysSwitchPort
+
+/*------------------------------------------------------------------------------
+ * Generic Defines and Includes
+ * Don't touch
+ *----------------------------------------------------------------------------*/
+
+#ifndef TRUE
+#define TRUE 1
+#endif
+
+#ifndef FALSE
+#define FALSE 0
+#endif
+
+#include <systick.h>
+#include <sysled.h>
+#include <sysadc.h>
+#include <usart.h>
+#include <usart1.h>
+
+#endif
