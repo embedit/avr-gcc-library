@@ -24,11 +24,25 @@
 
 #include "utils.h"
 
+/**----------------------------------
+ * @brief Send a string to function *f
+ * @param *f function pointer
+ * @param *s string
+ * @return void
+ *----------------------------------*/
+
 void write(void (*f)(char), const char *s )
 {
     while (*s)
         f(*s++);
 }
+
+/**----------------------------------
+ * @brief Send a string to function *f with Line End
+ * @param *f function pointer
+ * @param *s string
+ * @return void
+ *----------------------------------*/
 
 void writeln(void (*f)(char), const char *s )
 {
@@ -42,6 +56,13 @@ void writeln(void (*f)(char), const char *s )
 #endif
 }
 
+/**----------------------------------
+ * @brief Send a string from Flash to function *f
+ * @param *f function pointer
+ * @param *s const string
+ * @return void
+ *----------------------------------*/
+
 void write_p(void (*f)(char), const char *progmem_s )
 {
     register char c;
@@ -49,6 +70,13 @@ void write_p(void (*f)(char), const char *progmem_s )
     while ( (c = pgm_read_byte(progmem_s++)) )
         f(c);
 }
+
+/**----------------------------------
+ * @brief Send a string from Flash to function *f with Line End
+ * @param *f function pointer
+ * @param *s const string
+ * @return void
+ *----------------------------------*/
 
 void writeln_p(void (*f)(char), const char *progmem_s )
 {
