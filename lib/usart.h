@@ -60,6 +60,10 @@
 /*------------------------------------------------------------------------------
  * Fixes for USART(0)
  *----------------------------------------------------------------------------*/
+#if defined (UDR) && defined (UDR0)
+#undef UDR0
+#endif
+
 #if defined (UDR)
 #define UDR0    UDR
 #define UBRR0L  UBRRL
@@ -77,26 +81,22 @@
 #define UDRIE0  UDRIE
 #endif
 
-#if defined(SIG_USART_RECV)
-    #define UART0_RECV_IRQ SIG_USART_RECV
-    #define UART0_DATA_IRQ SIG_USART_DATA
-    #define UART0_TXC_IRQ SIG_USART_TRANS
-#elif defined(SIG_USART0_RECV)
-    #define UART0_RECV_IRQ SIG_USART0_RECV
-    #define UART0_DATA_IRQ SIG_USART0_DATA
-    #define UART0_TXC_IRQ SIG_USART0_TRANS
-#elif defined(SIG_UART0_RECV)
-    #define UART0_RECV_IRQ SIG_UART0_RECV
-    #define UART0_DATA_IRQ SIG_UART0_DATA
-    #define UART0_TXC_IRQ SIG_UART0_TRANS
-#elif defined(SIG_UART_RECV)
-    #define UART0_RECV_IRQ SIG_UART_RECV
-    #define UART0_DATA_IRQ SIG_UART_DATA
-    #define UART0_TXC_IRQ SIG_UART_TRANS
-#else
-    #define UART0_RECV_IRQ SIG_USART_RECV
-    #define UART0_DATA_IRQ SIG_USART_DATA
-    #define UART0_TXC_IRQ SIG_USART_TRANS
+#if defined(USART0_RX_vect)
+    #define UART0_RECV_IRQ USART0_RX_vect
+    #define UART0_DATA_IRQ USART0_UDRE_vect
+    #define UART0_TXC_IRQ USART0_TX_vect
+#elif defined(USART_RX_vect)
+    #define UART0_RECV_IRQ USART_RX_vect
+    #define UART0_DATA_IRQ USART_UDRE_vect
+    #define UART0_TXC_IRQ USART_TX_vect
+#elif defined(USARTRXC_vect)
+    #define UART0_RECV_IRQ USARTRXC_vect
+    #define UART0_DATA_IRQ USARTUDRE_vect
+    #define UART0_TXC_IRQ USARTTXC_vect
+#elif defined(USART_RXC_vect)
+    #define UART0_RECV_IRQ USART_RXC_vect
+    #define UART0_DATA_IRQ USART_UDRE_vect
+    #define UART0_TXC_IRQ USART_TXC_vect
 #endif
 
 /**----------------------------------

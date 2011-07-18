@@ -45,11 +45,11 @@ void usart0_init( void )
     #include <util/setbaud.h>
     UBRR0L = UBRRL_VALUE;
     UBRR0H = UBRRH_VALUE;
-    UCSR0B = ( ( 1 << RXCIE0 ) | ( 1 << RXEN0 ) | ( 1 << TXEN0 ) );
+    UCSR0B = ((1 << RXCIE0) | (1 << RXEN0) | (1 << TXEN0));
 #ifdef URSEL
-    UCSRC = (1<<URSEL)|(1<<UCSZ1)|(1<<UCSZ0);
+    UCSRC = (1 << URSEL) | (1 << UCSZ1) | (1 << UCSZ0);
 #else
-    UCSR0C = (1<<UCSZ01)|(1<<UCSZ00);
+    UCSR0C = (1 << UCSZ01) | (1 << UCSZ00);
 #endif
 #if USE_2X
     UCSR0A |= (1 << U2X0);
@@ -62,8 +62,8 @@ void usart0_init( void )
 /* Init direction Pin for RS485 Driver, if RS485 is used */
 #ifdef RS485_0_PORT
     UCSR0B |= (1 << TXCIE0);
-    RS485_0_PORT &= ~(1<<RS485_0_BIT);
-    RS485_0_DDR |= (1<<RS485_0_BIT);
+    RS485_0_PORT &= ~(1 << RS485_0_BIT);
+    RS485_0_DDR |= (1 << RS485_0_BIT);
 #endif /*RS485_0_PORT*/
 }
 
