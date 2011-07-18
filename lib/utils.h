@@ -44,6 +44,10 @@ struct bitfield {
 
 #define BIT(r,n) (((volatile struct bitfield *)&r)->b##n)
 
+/**----------------------------------
+ * @brief use DDR and PIN Registers without define
+ * 
+ *----------------------------------*/
 #define DDR(x) (*(&x - 1))
 #if defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__)
     #define PIN(x) ( &PORTF==&(x) ? _SFR_IO8(0x00) : (*(&x - 2)) )
