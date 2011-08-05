@@ -55,7 +55,7 @@ struct bitfield {
     #define PIN(x) (*(&x - 2))
 #endif
 
-#if defined (__AVR_ATmega32__)
+#if defined (__AVR_ATmega16__) || defined (__AVR_ATmega16A__) || defined (__AVR_ATmega32__) || defined (__AVR_ATmega32A__)
 	#define OUT_0 BIT(PORTB,0)
 	#define OUT_1 BIT(PORTB,1)
 	#define OUT_2 BIT(PORTB,2)

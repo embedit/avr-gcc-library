@@ -32,7 +32,7 @@
  * define Receive Buffer Size. Size can be 2, 4, 8, 16, 32, 64, 128 or 256 Byte
  * define Transmit Buffer Size. Size can be 2, 4, 8, 16, 32, 64, 128 or 256 Byte
  *----------------------------------------------------------------------------*/
-#define BAUD0 9600
+#define BAUD0 115200
 #define USART0_RX_BUFFER_SIZE 32
 #define USART0_TX_BUFFER_SIZE 32
 

@@ -38,12 +38,12 @@
 
 
 # MCU name
-MCU = atmega2560
+MCU = atmega32
 
 # Main Oscillator Frequency
 # This is only used to define F_CPU in all assembler and c-sources.
 ## F_CPU = 14745600UL
-F_CPU = 3579500UL
+F_CPU = 11059200UL
 
 # Path to external Source Files
 Ext_lib_path= ../lib/
@@ -191,13 +191,16 @@ LDFLAGS += $(PRINTF_LIB) $(SCANF_LIB) $(MATH_LIB)
 # Type: avrdude -c ?
 # to get a full listing.
 #
-AVRDUDE_PROGRAMMER = avrisp2
+AVRDUDE_PROGRAMMER = avr109
 
 # com1 = serial port. Use lpt1 to connect to parallel port.
-AVRDUDE_PORT = usb    # programmer connected to serial device
+#AVRDUDE_PORT = usb    # programmer connected to serial device
+AVRDUDE_PORT = /dev/ttyUSB1
 
 AVRDUDE_WRITE_FLASH = -U flash:w:$(TARGET).hex
 #AVRDUDE_WRITE_EEPROM = -U eeprom:w:$(TARGET).eep
+
+AVRDUDE_BAUDRATE = 115200
 
 
 # Uncomment the following if you want avrdude's erase cycle counter.
@@ -214,7 +217,7 @@ AVRDUDE_WRITE_FLASH = -U flash:w:$(TARGET).hex
 # to submit bug reports.
 #AVRDUDE_VERBOSE = -v -v
 
-AVRDUDE_FLAGS = -p $(MCU) -P $(AVRDUDE_PORT) -c $(AVRDUDE_PROGRAMMER)
+AVRDUDE_FLAGS = -p $(MCU) -P $(AVRDUDE_PORT) -c $(AVRDUDE_PROGRAMMER) -b $(AVRDUDE_BAUDRATE)
 AVRDUDE_FLAGS += $(AVRDUDE_NO_VERIFY)
 AVRDUDE_FLAGS += $(AVRDUDE_VERBOSE)
 AVRDUDE_FLAGS += $(AVRDUDE_ERASE_COUNTER)
